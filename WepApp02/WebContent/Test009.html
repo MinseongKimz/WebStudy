@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test009.html</title>
+<link rel="stylesheet" type="text/css"  href="css/externalStyle.css" >
+
+<style>
+	@import url("css/importStyle.css");
+	p {font-size: 100px; color: black;}
+</style>
+
+</head>
+<body>
+
+<div>
+	<h1>스타일 적용의 우선순위 규칙</h1>
+	<hr>
+</div>
+
+<p style="color: orange; font-size: 20pt;">이와 같은 상황이라면... 나는 어떻게 표현될까??? </p>
+
+<!-- p 태그에 적용되는 css구문이 보면 4개이다.
+	 이때는 적용대상 구문과 css 구문이 물리적으로 가까운게 적용된다. 여기서는 직접 표기한 오랜지 20pt 로 적용 -->
+</body>
+</html>
