@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test015.html</title>
+
+<style type="text/css">
+	*
+	{
+		color: #343;
+		font-family: 맑은 고딕;
+	}	
+	input.box:focus 
+	{
+		background-color: yellow;
+	}
+	input.btn:hover 
+	{
+		background-color : maroon;
+		color: tomato;
+		font-weight: bold; 
+    }
+    input.btn:focus
+    {
+		background-color : red; 
+		color: blue; 
+	}
+	input.numberBox
+	{
+		width: 50px;
+		text-align: right;
+	}
+	
+	input#txtResult
+	{	
+		
+	}
+</style>
+
+<script type="text/javascript">
+	
+	/* function buttonA()
+	{
+		//alert("a버튼 클릭");
+		var msgLeft = document.getElementById("txtLeft");
+		var msgRight = document.getElementById("txtRight");
+		
+		msgRight.value = msgLeft.value;
+	}
+	
+	function buttonB()
+	{
+		//alert("b버튼 클릭");
+		var msgLeft = document.getElementById("txtLeft");
+		var msgRight = document.getElementById("txtRight");
+		
+		msgLeft.value = msgRight.value;
+	}
+	function reset()
+	{
+		var msgLeft = document.getElementById("txtLeft");
+		var msgRight = document.getElementById("txtRight");
+		
+		msgLeft.value = "";
+		msgRight.value = "";
+	} */
+	
+	
+	function actionBtnA()
+	{
+		//alert(document.getElementById("txtLeft")); -- error
+		//alert(document.getElementById("txtLeft").value);
+		
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		//alert(txt01.value);
+		
+		var leftStr = txt01.value;
+		
+		txt02.value = leftStr;
+		
+	}
+	function actionBtnB()
+	{
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		//alert(txt01.value);
+		
+		var rightStr = txt02.value;
+		
+		txt01.value = rightStr;
+	}
+	
+/* 	function result()
+	{
+		var txt01 = document.getElementById("txtNumber01").value;
+		var txt02 = document.getElementById("txtNumber02").value;
+		var txt03 = document.getElementById("txtResult");
+		
+		var result = parseInt(txt01) + parseInt(txt02)
+		
+		txt03.value = result;
+	} */
+	
+	function actionBtnResult()
+	{
+		//alert("함수호출확인")
+		var num1 = document.getElementById("txtNumber01").value;
+		var num2 = document.getElementById("txtNumber02").value;
+		
+		//var result = parseInt(num1) +  parseInt(num2);
+		var result = Number(num1) + Number(num2);
+		
+		document.getElementById("txtResult").value = result;
+	}
+	 
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 기본 관찰</h1>
+	<hr>
+</div>
+
+<div>
+	<br>
+	<input type="text" class="box" id="txtLeft" >
+	<input type="button" value="A버튼" class="btn" id="btnA" onclick="actionBtnA()">
+	<input type="button" value="B버튼" class="btn" id="btnB" onclick="actionBtnB()">
+	<input type="text" class="box" id="txtRight" >
+	<br>
+	<hr>
+	<br>
+	<input type="text" class="numberBox" id="txtNumber01"> 
+	+ 
+	<input type="text" class="numberBox" id="txtNumber02">
+	<input type="button" value="=" class="btn" id="btnResult" onclick="actionBtnResult()">
+	<input type="text" class="numberBox" id="txtResult" disabled="disabled"> 
+	
+</div>
+
+</body>
+</html>

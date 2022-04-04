@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test016.html</title>
+
+<style type="text/css">
+	* {color: #223322;}
+    input
+	{
+		font-family: 나눔고딕코딩;
+		font-weight: bold;
+	}
+	input:focus
+	{
+		backgroud-color: #eeeedd;
+	}
+	input.btn
+	{
+		width: 80px;
+		font-weight: bold;
+		font-family: 맑은 고딕;
+	}
+	input.btn:hover
+	{
+		color: aqua;
+	}
+	input.btn:active
+	{
+		color: tomato;
+	}
+</style>
+
+<script type="text/javascript">
+
+	function result1(a)
+	{
+		var num1 = document.getElementById("num1").value;
+		var num2 = document.getElementById("num2").value;
+		var result1 = 0;
+		
+		//alert(s);
+		if (parseInt(a) == 1)
+			result1 = parseInt(num1)+parseInt(num2);
+		else if (parseInt(a) == 2)
+			result1 = parseInt(num1)-parseInt(num2);
+		else if (parseInt(a) == 3)
+			result1 = parseInt(num1)*parseInt(num2);
+		else if (parseInt(a) == 4)
+			result1 = parseInt(num1)/parseInt(num2);
+		
+		document.getElementById("result").value= result1;
+	}
+	
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바 스크립트 활용</h1>
+	<hr>
+</div>
+
+
+<div>
+	<p>사용자로부터 두 개의 정수를 입력받고</p>
+	<p>합, 차, 곱, 몫을 연산하여 연산 결과를 페이지에 출력할 수 있도록 한다.</p>
+	 <p>HTML CSS Javascript 를 활용하여 처리한다.</p>
+</div>
+
+<div>
+	<form>
+		정수1 <input type="text" id="num1" class = "txtNum">
+		정수2 <input type="text" id="num2" class = "txtNum">
+		<br><br>
+		
+		<input type="button" class="btn" value="더하기"  onclick="result1(1)">
+		<input type="button" class="btn" value="빼기"  onclick="result1(2)">
+		<input type="button" class="btn" value="곱하기" onclick="result1(3)">
+		<input type="button" class="btn" value="나누기" onclick="result1(4)">
+		
+		결과 <input type="text" id="result" class="txtNumResult" disabled="disabled">
+		<input type="reset" class="btn" value="취소">
+	</form>
+</div>
+</body>
+</html>
