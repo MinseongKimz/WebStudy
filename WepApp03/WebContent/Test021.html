@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test021.html</title>
+
+<style type="text/css">
+body
+{
+	margin: 0;
+}
+.title
+{
+
+	background-color: #353535;
+	height: 60px;
+	z-index: -1;
+}
+.img
+{
+	margin-bottom: 10%;
+	z-index: -1;
+}
+.head
+{
+	background-color: #353535; 
+	padding: 0;
+	margin: 0;
+	vertical-align : bottom;  
+}
+.head p
+{
+	margin : 0;
+	text-align: center;
+	font-size: 60px;
+	font-family : 맑은 고딕;
+	font-style :italic;
+	color: white;
+}
+.main
+{
+	display : flex;
+	justify-content: center;
+	font-size: 20px;
+}	
+.txt 
+{
+	font-size: 20px;
+	margin-left : 10px;
+}
+.btn
+{
+
+	background-color: salmon;
+	font-size: 20px;
+	border-radius: 10px;
+	letter-spacing: 3px;
+  	line-height: 1;
+  	box-shadow: blue;
+  	border: 0;
+  	padding: 10px;
+}
+.btn:hover {
+	background-color: #bfff00;
+}
+
+.btn:active{
+	background-color: red;
+}
+</style>
+
+
+<script type="text/javascript">
+	function array()
+	{
+		var str = document.getElementById("txt01").value;
+		var arr = str.split(" ");
+		
+		// 배열 최댓값 담을 변수
+		var max = "";
+		// 배열 전체 담을 변수
+		var all = "";
+		
+		for (var i = 0; i < arr.length; i++)
+			all += arr[i] + " ";
+		
+		document.getElementById("txt02").value = all;
+		
+		// 맥스 값 찾기
+		max = Number(arr[0]);
+		
+		for (var i = 1; i < arr.length; i++)
+		{
+			if (max < Number(arr[i]))
+				max = Number(arr[i]);
+		}	
+		document.getElementById("txt03").value = max;
+	}
+	
+	function catchThis()
+	{
+		alert("이걸잡아?");
+	}
+</script>
+
+</head>
+<body>
+<!-- 
+	사용자로부터 임의의 정수를 임의의 갯수 만큼 입력받고,
+	그 내용으로 배열을 구성하여
+	구성한 정수들 중 가장 큰 수를 출력해 줄 수 있는 페이지를 구현한다.
+	
+	페이지 레이아웃
+	-----------------------------------------------
+	데이터 입력(공백 구분) [ 2 8 285 43 7 ]
+	
+	< 	결과 확인	>
+	
+	- 전체 출력 [ 2 8 285 43 71 ]
+	- 가장 큰 수 [ 285 ]
+	
+	-----------------------------------------------
+ -->
+ <div class="title">
+ 	<marquee direction="right" scrollamount="17" height="110px"><img alt="말" src="images/미니언.gif" height="160" class="img" onclick="catchThis()"></marquee>
+ </div>
+ 
+ 
+<div class="head">
+	<p>자바스크립트 배열 최고값</p>
+	<hr>
+</div>
+<div class="main">
+	<form>
+	<br>
+		데이터 입력(공백 구분)
+		<input type="text" id="txt01" class="txt">
+		<input type="button" value="결과 확인" class="btn" onclick="array()"><br><hr>
+		<p style="margin-left:16%">- 전체 출력&nbsp;
+		<input type="text" id="txt02" class="txt" readonly="readonly"></p><hr>
+		<p style="margin-left:16%">- 가장 큰 수 
+		<input type="text" id="txt03" class="txt" readonly="readonly"></p><hr>
+	</form>
+</div>
+</body>
+</html>

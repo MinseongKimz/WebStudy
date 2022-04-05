@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test019.html</title>
+
+<style type="text/css">
+body
+{
+	margin: 0;
+}
+
+.head
+{
+	background-color: #353535; 
+	padding: 0;
+	margin: 0;
+	height : 300px;
+	background-image: url("images/강호동 오미자차.gif");
+	vertical-align : bottom;  
+}
+
+.head p
+{
+	margin : 0;
+	text-align: center;
+	font-size: 60px;
+	font-family : 맑은 고딕;
+	font-style :italic;
+	color: white;
+}
+
+.main
+{
+	display : flex;
+	justify-content: center;
+	font-size: 20px;
+	
+}	
+.txt 
+{
+	font-size: 20px;	
+}
+.box
+{
+	width : 444px;
+	height : 500px;
+	font-family: 맑은 고딕;
+	font-size: 20px;
+	border: solid 2px #1E90FF;
+	border-radius: 5px;
+	font-size: 20px;
+	resize: none;
+	background-color: white;
+
+}
+.btn
+{
+	background-color: salmon;
+	font-size: 20px;
+	border-radius: 10px;
+	letter-spacing: 3px;
+  	line-height: 1;
+  	box-shadow: blue;
+  	border: 0;
+  	padding: 10px;
+}
+
+.btn:hover {
+	background-color: #bfff00;
+}
+
+.btn:active {
+	background-color: tomato;
+}
+
+</style>
+
+<script type="text/javascript">
+	function test()
+	{
+		document.getElementById("box").value = "";
+		
+		var numStr = document.getElementById("num").value;
+		var num = parseInt(numStr);
+		
+		if (num < 100 || isNaN(num))
+		{
+			alert("100 이상의 숫자를 입력해주세요~!!");
+			return;
+		} 
+		
+		var numS = 0; // 누적을 위한 변수
+		
+		for (var i = 1; i < num; i++)
+		{
+			numS += i; // i만큼 누적시키고
+			if (i%10==0) // 10의 배수라면
+				document.getElementById("box").value += "1 ~ " + i + " : " + numS + "\n";  	
+		}
+		document.getElementById("box").value += "---------------------------------------\n"
+		document.getElementById("box").value += "1 ~ " + num +" : " + ((1+num)/2)*num+"\n\n"; 
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+	1 부터 n 까지의 합을 계산하되 n 은 100 이상만 허용하고
+	출력 시 10의 배수가 될 때마다 중간 합을 출력할 수 있는
+	페이지를 구성한다.
+	반복문을 활용할 수 있도록 한다.
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃	 (조건 유효성 → 입력 값은 100 이상만 가능 알람 띄우기)
+	------------------------------------------------------
+	정수 입력(100 이상) [  100	] 
+	
+		<결과>	<취소>
+	------------------------- → textarea 사용
+	| 1 ~ 10 : 55			|
+	| 1 ~ 20 : 210			|
+	|   :					|
+	| 1 ~ 100 : 5050		|
+	-------------------------
+	------------------------------------------------------
+ -->
+
+<div class="head"> 
+<br><br><br><br><br><br><br><br><br><br>
+	<p> 자바스크립트 활용</p>
+	<hr>
+</div>
+
+
+<div class="main">
+		<form>
+		<p>정수 입력 (100 이상) <input type="text" id="num" class = "txt"></p>
+	
+		<input type="button" value="결과" class="btn" onclick="test()" style="margin-left: 68%">	
+		<input type="reset" value="취소" class="btn" >			
+		<hr>
+		<textarea rows="10" cols="50" readonly="readonly"  id="box" class = "box"></textarea>
+		<!-- readonly 는 읽기만 가능 disable은 값 전달이 안될수 있음 -->
+		</form>	
+</div>
+
+</body>
+</html>
