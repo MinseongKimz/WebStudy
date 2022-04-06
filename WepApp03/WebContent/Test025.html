@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test025.html</title>
+
+<style type="text/css">
+
+body{ margin: 0;}
+.head
+{
+	background-color: #353535; 
+	padding: 0;
+	margin: 0;
+}
+.head p
+{
+	margin : 0;
+	text-align: center;
+	font-size: 60px;
+	font-family : 맑은 고딕;
+	font-style :italic;
+	color: white;
+}
+
+.main
+{
+	display : flex;
+	justify-content: center;
+	font-size: 20px;
+	
+}	
+.txt 
+{
+	font-size: 20px;
+	text-align: right;
+	width: 100px;
+}
+
+.table {
+	
+	text-align: center;
+	padding: 10px;
+	margin-left: 5%;
+	width: 300px;
+	
+	outline-style: groove;
+
+	
+}
+
+.btn
+{
+	background-color: salmon;
+	font-size: 20px;
+	border-radius: 10px;
+	letter-spacing: 3px;
+  	line-height: 1;
+  	box-shadow: blue;
+  	border: 0;
+  	padding: 10px;
+  	margin-left: 43%; 
+}
+.re
+{
+	background-color: salmon;
+	font-size: 20px;
+	border-radius: 10px;
+	letter-spacing: 2px;
+  	line-height: 1;
+  	box-shadow: blue;
+  	border: 0;
+  	padding: 10px;
+}
+.btn:hover {
+	background-color: #bfff00;
+}
+
+.btn:active {
+	background-color: tomato;
+}
+
+.re:hover {
+	background-color: #bfff00;
+}
+
+.re:active {
+	background-color: tomato;
+}
+
+.sun{
+	background-color: #f29886;
+}
+.sat{
+	background-color: #d9e6fd ;
+}
+
+
+</style>
+
+<script type="text/javascript">
+
+	function calender()
+	{
+		// 입력받은 년 월 가져오기
+		var y = Number(document.getElementById("txtYear").value);
+		var m = Number(document.getElementById("txtMonth").value);
+		
+		var year = parseInt(y);
+		var month = parseInt(m);
+		
+		if (year < 1)
+		{
+			alert("입력년도 이상~!!!");
+			return;
+		}
+		
+		if (month<1 || month>12)
+		{
+			alert("입력한 달이 올바르지 않습니다.")
+			return;
+		}
+		
+		// 월별 끝나는 날
+		var months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // 1월 = months[0]
+		
+		// 윤년 
+		if ((y%4==0 && y%100 !=0) || y%400==0)
+			months[1] = 29; // 2월 은 인덱스 1 
+		
+		// 지나온 년 에대한 날수 구하기
+		var nalsu = (y-1)*365 + (y-1)/4 - (y-1)/100 + (y-1)/400; 
+		//	           평년		  윤년	  100년예외   예외때매 빠진 400때 윤년	
+		
+		// 지나온 월 전달 까지 날수 더해주기
+		for (var i = 0; i < m-1; i++)
+			nalsu += months[i];
+		
+		// 1일 
+		nalsu += 1;
+		
+		var w = parseInt(nalsu % 7); // 월의 시작 요일을 알 수 있다.
+		//만약 1일이 수요일이면 3 이 나올꺼고 
+		// 이를 w 에 저장..  
+		
+		//alert(w);
+		
+		// 달력 그리기 1 테이블 노드
+		var tableNode = document.getElementById("calendarTbl");
+		
+		// 2 tr 노드 <일 월 화 수 목 금 1층>
+		var trNode = document.createElement("tr"); //<tr> </tr>
+		
+		// 시작날(w) 전까지 빈칸 채우기
+		for (var i = 0; i < w; i++)
+		{
+			trNode.appendChild(createTdNode(""));
+		} 
+		
+		// 그다음 부터 채우기 
+		for (var i = 1; i <= months[m-1]; i++)
+		{
+			trNode.appendChild(createTdNode(i));
+			
+			// 일요일 전에 개행<tr> 이 필요
+			//22년 4월 기준 1일 금요일 w=5 2일후 일요일 w + i = 7의 배수 
+			// hr 필요
+			if ((w+i)%7==0)
+			{
+				tableNode.appendChild(trNode);	
+				trNode = document.createElement("tr");
+			}
+		}   
+		// 끝날 채우기 
+		// 22년 5월 기준 끝나는날 31일 화요일 , 채워야 하는 갯수 수목금토 4개
+		// 끝나는날 의 위치를 알아야함. 
+		
+		var last = nalsu + months[m-1] - 1; 
+		last = parseInt(last % 7); 
+		
+		//alert(last); // 5월 기준 2나옴 → 화요일
+		
+		for (var i = last; i < 6; i++)   
+			trNode.appendChild(createTdNode(""));
+		
+		// 마지막 노드 합치기
+		tableNode.appendChild(trNode);
+	}
+	
+	function createTdNode(val)
+	{
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");
+		tdNode.appendChild(textNode);
+		return tdNode;
+	}
+
+</script>
+</head>
+<body>
+
+<div class="head">
+	<p>테이블 동적 생성으로 만년달력 그리기</p>
+	<hr>
+</div>
+
+<div class="main">
+	<form>
+		<input type="text" id="txtYear" class="txt"> 년
+		<input type="text" id="txtMonth" class="txt"> 월
+		<button type="button" class="re" onclick= "history.go(0)">
+		<img alt="리프레쉬" src="images/새로고침.png" style="width: 30px; height: 30px;"></button>
+		<br><hr>
+	
+		<button type="button" class="btn" onclick="calender()">만년달력 그리기</button>
+		<br><hr>
+		<table border="1" id="calendarTbl" class="table">
+			<colgroup >
+				<col class="sun">
+				<col span="5">
+				<col class="sat">
+			</colgroup>
+			<tr style="font-style: italic;">
+				<th>일</th>
+				<th>월</th>
+				<th>화</th>
+				<th>수</th>
+				<th>목</th>
+				<th>금</th>
+				<th>토</th>
+			</tr>
+			
+		</table>
+	</form>
+</div>
+
+
+
+
+</body>
+</html>
