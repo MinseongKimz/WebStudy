@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test027.html</title>
+<style type="text/css">
+body
+{
+	margin: 0;
+}
+
+.head
+{
+	background-color: #353535; 
+	padding: 0;
+	margin: 0;
+}
+
+.head p
+{
+	margin : 0;
+	text-align: center;
+	font-size: 60px;
+	font-family : 맑은 고딕;
+	font-style :italic;
+	color: white;
+}
+
+.main
+{
+	display : flex;
+	justify-content: center;
+	font-size: 20px;
+	
+}	
+.txt 
+{
+	font-size: 20px;	
+	width: 40px;
+	height: 30px;
+}
+.box
+{
+	width : 444px;
+	height : 500px;
+	font-family: 맑은 고딕;
+	font-size: 20px;
+	border: solid 2px #1E90FF;
+	border-radius: 5px;
+	font-size: 20px;
+	resize: none;
+	background-color: white;
+}
+.btn
+{
+	background-color: salmon;
+	font-size: 20px;
+	border-radius: 10px;
+	letter-spacing: 3px;
+  	line-height: 1;
+  	box-shadow: blue;
+  	border: 0;
+  	padding: 10px;
+  	height: 35px;
+}
+
+.btn:hover {
+	background-color: #bfff00;
+}
+
+.btn:active {
+	background-color: tomato;
+}
+
+
+
+</style> 
+
+<script type="text/javascript">
+
+	function lottoGame()
+	{
+		 //받은 게임 수 
+		var userStr = document.getElementById("lotto").value;
+		var user = parseInt(userStr);
+		
+		for (var i = 0; i < user; i++)
+		{
+			document.getElementById("txtA").value +=  random() + "\n";
+		} 
+		document.getElementById("txtA").value += "-------------------["+ user +"game]-----\n";
+	}
+	
+	function random()
+	{
+		// 배열 중복 안되는 랜덤 수 넣기
+		var user =[];
+		var str = "";
+		for (var i = 0; i < 6; i++)
+		{
+			var number = parseInt(Math.random()*45) +1;
+			user[i] = number;
+			for (var j = 0; j < i; j++)
+			{
+				if(user[i]==user[j])
+					i--; 
+			}
+		}
+		
+		// 배열 오름차순 정렬
+		for (var i = 0; i < user.length - 1; i++)
+		{
+			for (var j = i+1; j < user.length; j++)
+			{
+				if (user[i]>user[j])
+				{
+					
+					user[i] = user[i]^user[j];
+					user[j] = user[j]^user[i];
+					user[i] = user[i]^user[j];
+				}
+			} 
+		}
+		
+		for (var i = 0; i < user.length; i++)
+		{
+			str += leadingZeros(user[i])  + " ";
+		} 
+		
+		return str;
+	}
+	
+	function leadingZeros(n) 
+	{
+		  var zero = "";
+		  n = n.toString();
+
+		  if (n.length < 3) {
+		    for (var i = 0; i < 3 - n.length; i++)
+		    	 zero += "  ";
+		  }
+		  return zero + n;
+	}
+	
+	
+	
+</script>
+</head>
+<body>
+
+<!-- 
+	로또 번호(1~45)를 중복되지 않은 정수 6개를 생성하여
+	출력해주는 페이지를 구현한다.
+	HTML, CSS, Javascript 를 활용한다.
+	난수 발생 함수를 활용한다.
+	번호순으로(오름차순) 정렬하여 출력할 수 있도록 한다.
+	주문한 장 수 만큼 출력할 수 있도록 한다.
+	
+	페이지 레이아웃
+	-----------------------------------------------
+	로또	[	 ] 장   <주문하기>
+	
+	결과
+	--------------------------
+	1 2 3 4 5 6 
+	6 13 22 24 36 39
+	2 3 22 34 35 36
+	--------------------------
+	
+	-----------------------------------------------
+ -->
+
+<div class="head">
+	<p>로또 번호 생성기</p>
+	<hr>
+</div>
+
+<div class="main">
+	<form>
+	<p style="margin-left: 30%;">로또 <input type="text" class="txt" id="lotto" >장  <input type="button" class="btn" value="주문하기" onclick="lottoGame()"></p>
+	<hr>
+	<p style="margin-left: 45%">[결과]</p>
+	<textarea rows="30" cols="40" readonly="readonly" id= "txtA" class = "box"></textarea>
+	</form>
+</div>
+
+</body>
+</html>
