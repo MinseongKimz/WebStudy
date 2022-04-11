@@ -41,7 +41,53 @@
 	// 글쓰기 버튼이 클릭되었을 때 호출되어 기능하는 함수
 	function protoTest()
 	{
+		//확인
+		//alert("sad");
 		
+		var uName = document.getElementById("uName").value;
+		var uContent = document.getElementById("uContent").value;
+		
+		var len = boardArray.length;
+		// 확인
+		//alert(len);
+		//--==>> 0
+		
+		boardArray[len] = new Board(uName, uContent);
+		
+		// 확인
+		//alert(len); 
+		// 작성이(글쓰기 버튼 누를, protoTest호출)이루어 질때마다 +1 씩 배열 길이 증가함
+		
+		// 내용 출력 함수 호출
+		print(len);
+	}
+	
+	// 내용 출력 함수 정의
+	function print(idx)
+	{
+		// 확인
+		//var strTemp = boardArray[idx].content;
+		//alert(strTemp);
+		
+		var tableNode = document.getElementById("bbsTable");
+		var trNode = document.createElement("tr");
+		
+		trNode.appendChild(createTdNode((idx+1).toString()));				// 번호
+		trNode.appendChild(createTdNode(boardArray[idx].userName));			// 이름
+		trNode.appendChild(createTdNode(boardArray[idx].content));			// 내용
+		trNode.appendChild(createTdNode(boardArray[idx].userLocalString()));	// 작성일
+		
+		tableNode.appendChild(trNode);
+		
+	}
+	
+	// td 노드 생성 및 반환함수정의
+	function createTdNode(val)
+	{
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");
+		tdNode.appendChild(textNode);
+		return tdNode;
 	}
 	
 	
