@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send01.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+<!-- 
+	○ 데이터 송수신 실습 01
+		- 이름과 전화번호를 입력받은 html 페이지를 작성한다.
+		
+		이름 		[textbox]    ← 서민지
+		전화번호 	[textbox]	 ← 010-1111-1111
+		
+		< 회원가입 > → button
+		
+		- 회원가입 버튼 클릭 시
+		  『서민지님, 회원 가입이 완료되었습니다.
+		    회원님께서 등록하신 전화번호는 010-1111-1111 입니다.』
+		  라는 내용을 출력하는 JSP 페이지(Receive01.jsp)를 구성하여
+		  데이터를 전달할 수 있도록 한다.
+		  
+		  - 사용자의 최초 요청 주소는
+		  	http://localhost:8090/WebApp07/Send01.html 로 한다.
+		  	
+	○ Send01.html
+	   Receive01.jsp	  	  
+ -->
+
+<div>
+	<h1>데이터 송수신 실습 01</h1>
+	<hr>
+</div>
+
+<div>
+ 	<form action="Receive01.jsp" method="post">
+ 		<!--    id, name 속성은 어떤 영역에서 어떤 선택자를 활용하느냐에 따라
+ 				적절히 판단하여 부여해야 한다.
+ 				
+ 				name 속성은 JSP 에서 사용하게 될 식별자
+ 		 -->
+ 		<p>이름 <input type="text" name="name" class="txt"></p>
+ 		<p>전화번호 <input type="text" name="tel"  class="txt"></p>
+ 		
+ 		<br><br>
+ 		<input type="submit" value="회원가입" class="btn control">
+ 	</form>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

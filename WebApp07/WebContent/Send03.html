@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send03.html</title>
+</head>
+<body>
+
+<!-- 
+	○ 데이터 송수신 실습 03
+		- 두 개의 정수와 연산자를 입력받는 html 페이지를 구성한다.
+		
+								select
+		정수1 [ textbox ]   [더하기 ▼]  정수 2 [ textbox ]
+				 ↑45         ↑ 빼기              ↑ 20 
+				 
+		<결과 확인> <취소> → button
+		
+		- 데이터 입력 및 선택 후 결과 확인 버튼 클릭시        				 	
+		  『입력하신 45와(과) 32 의 연산 결과는 77 입니다.』	
+		  라는 내용을 출력하는 jsp 페이지 (Receive03.jsp)를 구성하여
+		  데이터를 전달할 수 있도록 한다.
+		  
+		- 사용자의 최초 요청 주소는
+			http://localhost:8090/WebApp07/Send03.html 로 한다.
+			
+	○ Send03.html
+	   Receiver.jsp
+ -->
+ 
+<div>
+	<h1>데이터 송수신 실습 03 </h1>
+	<hr>
+</div>
+
+<div>
+   <form action="Receive03.jsp" method="post">  
+	<table class="table">
+		<tr>
+			<th>정수 1</th><td><input type="text" name="num1" class="txt"></td>
+			 <td><select name="buho" style="width: 100px; font-size: 20px;">
+			 		<option value="+">더하기</option> <!-- + 는 주의 get 방식으로는 주소에서 문자열 합치기로 바뀔수도 있다. -->
+			 		<option value="-">빼기</option>
+			 		<option value="*">곱하기</option>
+			 		<option value="/">나누기</option>
+			 	</select></td>
+			 	
+			<th>정수 2</th><td><input type="text" name="num2" class="txt"></td>
+		</tr>
+		<tr >
+			<td colspan="2" >
+			<button type="submit" class="btn control" style="width: 150px;">결과확인</button>
+			<button type="reset" class="btn control" style="width: 150px;">취소</button>
+			</td>		
+		</tr>
+	</table>
+	</form>		
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
