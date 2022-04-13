@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send04.html</title>
+<link rel="stylesheet" type="text/css" href="css/myKms.css">
+<style type="text/css">
+td {
+	margin-left: 5%;
+}	
+th {
+	margin-left: 10%;
+}
+.msg{
+	font-size: 10pt;
+	color: red;
+	margin-left: 10px;
+	display: none;
+}
+
+</style>
+
+<script type="text/javascript">	
+
+	function check()
+	{
+		var id = document.getElementById("id");
+		var pwd = document.getElementById("pwd");
+		var name = document.getElementById("name");
+		var tel = document.getElementById("tel");
+		
+		// ~를 입력하세요 안내 문구 스타일을 제어하기 위한 선언
+		var idMsg = document.getElementById("idMsg");
+		var pwdMsg = document.getElementById("pwdMsg");
+		var nameMsg = document.getElementById("nameMsg");
+		var telMsg = document.getElementById("telMsg");
+		
+		// form 내부의 컨트롤에 대한 값을 변경 하고 이 함수를 다시 호출 할 때마다
+		// 기존 안내되었던 에러 메세지를 지우고 다시 확인 할 수 있도록 처리
+		idMsg.style.display = "none";
+		pwdMsg.style.display = "none";
+		nameMsg.style.display = "none";
+		telMsg.style.display = "none";
+		
+		if (id.value == "") //-- 아이디가 입력되지 않은 상황
+		{
+			//alert("아이디가 입력되지 않은 상황");
+			idMsg.style.display = "inline";
+			id.focus();
+			return false;
+		}
+		
+		if (pwd.value == "") //-- 비밀번호가 입력되지 않은 상황
+		{
+			pwdMsg.style.display = "inline";
+			pwd.focus();
+			return false;
+		}
+		
+		if (name.value == "")  //-- 이름이 입력되지 않은 상황
+		{
+			nameMsg.style.display = "inline";
+			name.focus();
+			return false;
+		}
+		if (tel.value == "")  //-- 전화번호가 입력되지 않은 상황
+		{
+			telMsg.style.display = "inline";
+			tel.focus();
+			return false;
+		}
+		return true;
+	} 
+</script>
+</head>
+<body>
+
+
+<!-- 
+	○ 데이터 송수신 실습 04
+		- 회원 가입과 관련한 기본 정보를 입력받는 html 페이지를 작성한다.
+		
+		- 서버로 입력된 데이터를 전송하기 전에
+		  (즉, 클라이언트 측에서 작성한 내용을 서버에 제출하기 전에)
+		  입력 데이터에 대한 기본적인 검사 과정을 자바스크립트를 활용하여 
+		  추가할 수 있도록 한다.
+		  
+		  아이디(*)			[ textbox ]      
+		  패스워드(*)		[ textbox ]
+		  이름(*)			[ textbox ]	
+		  전화번호(*)		[ textbox ]
+		  
+		  성별 			● 여자   ○  남자
+		  
+		  지역			[   서울   ▼ ]
+		  					대전
+		  					대구
+		  					광주
+		  
+		  수강과목 		□자바기초 □오라클중급 □JDBC심화	□ JSP활용
+		  
+		  		<회원가입>              <취소>
+		  		
+		- 필수 입력 사항(*)을 포함한 입력 내용을 구성한 후 회원 가입 버튼 클릭 시 
+		  회원 입력 정보들의 내용을 출력하는 JSP 페이지(Receive04.jsp)를 구성하여
+		  데이터를 전달할 수 있도록 한다.
+		  
+		  - 사용자의 최초 요청 주소는
+		  	http://localhost:8090/WebApp07/Send04.html 로 한다.
+		  	
+		  ○ Send04.html
+		     Receive04.jsp	  					
+		 	
+ -->
+
+<div class="head">
+	<p>데이터 송수신 실습 04<p>
+	<hr>
+</div>
+
+
+<div class="main">
+	<!-- ※ form 태그의 『onsubmit』 : submit 액션이 발생할 경우
+			이 때 호출 되는 자바스크립트 함수에서
+			return true 할 경우 Recive04.jsp 로 제어권이 넘어가게 되며
+			return false 할 경우 제어권이 넘어가지 않는다. -->
+	<form action="Receive04.jsp" method="post"  onsubmit="return check()">
+		<table class="table">
+			<tr >
+				<th>아이디(*)</th>
+				<td><input type="text" name="id" id="id" class="txt" ><span class="msg" id="idMsg">아이디를 입력하세요</span></td>		
+			</tr>
+			<tr>
+				<th>패스워드(*)</th> <td><input type="password" name="pwd" id="pwd"  class="txt" ><span class="msg" id="pwdMsg">비밀번호를 입력하세요</span></td>		
+			</tr>		
+			<tr>
+				<th>이름(*)</th> <td><input type="text" name="name" id="name" class="txt" ><span class="msg" id="nameMsg">이름을 입력하세요</span></td>		
+			</tr>
+			<tr>
+				<th>전화번호(*)</th> <td><input type="tel" name="tel" id="tel" class="txt" ><span class="msg" id="telMsg">전화번호를 입력하세요</span></td>		
+			</tr>
+			<tr>
+				<th>성별</th>
+				<th><label><input type="radio" value="여자" name="gender" id="여자">여자</label>
+				<label><input type="radio" value="남자" name="gender" id="남자">남자</label></th>
+			</tr>
+			<tr>
+				<th>지역</th><td><select id="city" name="city" class="txt">
+									<option value="서울">서울</option>	
+									<option value="대전">대전</option>	
+									<option value="대구">대구</option>	
+									<option value="광주">광주</option>	
+								 </select> </td>					
+			</tr>
+			<tr>
+				<th>수강과목</th>
+				<td>
+				<label><input type="checkbox" name="subject" id="sb1" value="자바기초">자바기초</label>
+				<label><input type="checkbox" name="subject" id="sb2" value="오라클중급">오라클중급</label>
+				<label><input type="checkbox" name="subject" id="sb3" value="JDBC심화">JDBC심화</label>
+				<label><input type="checkbox" name="subject" id="sb4" value="JSP활용">JSP활용</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<br>
+					<button type="submit" class="btn">회원가입</button>
+					<button type="reset" class="btn">취소</button>
+					<br><br>
+				</td>
+			</tr>
+		</table>		
+	</form>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
