@@ -1,0 +1,34 @@
+■■■ Emmet(에밋) ■■■
+
+○ 개요
+
+   - 기존에는 Zen Coding(젠코딩)이라는 이름으로 사용되었다.
+   - 이후 구글에서 이 도구를 수용하면서 Emmet 이라는 이름으로 변경되었다.
+   - HTML 생산성 향상 도구 (HTML 코딩을 빠르게 하기 위한 플러그인)
+   - CSS 선택자 사용(CSS3 지원)
+     → HTML 을 CSS 선택자를 통해 검색하는 방법 대신
+        CSS 선택자를 통해 HTML 을 생성하도록 하는 개념
+
+○ 환경 설정
+
+   - 대부분의 툴에서 지원하고 있음
+     (※ 그리고 대부분의 편집기 내에서의 액션키 : ctrl + E)
+
+   - http://emmet.io
+	① 메인 페이지 좌측에 있는 Download 버튼 클릭
+	   → https://emmet.io/download/ 페이지로 이동
+	② Download 리스트들 중 『Eclipse/Aptana』 클릭
+	   → https://github.com/emmetio/emmet-eclipse#readme 
+
+	③ Installation 항목따라 진행 
+
+	④ Emmet 플러그인이 제대로 설치되고 이클립스가 정상적으로 재구동 됬다면..
+           이클립스의 기본메뉴에 Emmet 항목이 추가됨을 확인..
+
+	※ 특이사항
+	   Emmet 플러그인 설치 후 이클립스 기본 단축키와 기능이 중복되는 항목이 존재함..
+	                     =  Ctrl + D  
+	   ==>> 단축키 재설정 필요   
+		(이클립스> 윈도우 > 설정)	
+		Match Pair Outward 단축키 해제	
+            

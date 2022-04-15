@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EmmetTest01.html</title>
+</head>
+<body>
+
+<div>
+	<h1>※ 기능 적용 액션 키 → Ctrl + E (or tab)</h1>
+	<hr>
+</div>
+
+1. 태그 선택자
+
+<div>
+	넣을 내용	
+</div>
+
+<!-- <a href="www.naver.com">네이버</a> -->
+
+2. id 
+<!-- div#box -->
+div#box{lll}
+<div id="box">lll</div>
+
+#box{sdsd}
+<div id="box">sdsd</div>
+
+3. 클래스 선택자
+div.itmes
+<div class="itmes"></div>
+
+.itmes{sad}
+<div class="itmes">sad</div>
+
+4. 조합
+div#box.itmes
+<div id="box" class="itmes"></div>
+
+#box.itme.unit.control
+<div id="box" class="itme unit control"></div>
+
+5. 속성 선택자
+div[title='test']
+<div title="test"></div>
+
+input[type='text' value=20]		
+<input type="text" value="20" >
+
+6. PCDATA
+div{박스}		
+<div>박스</div>
+a{홈페이지로 이동}			
+<a href="">홈페이지로 이동</a>		
+
+p{문단내용구성}
+<p>문단내용구성</p>
+
+7. 반복생성
+
+div*5
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+
+img[src=images/dog.jpg]*5
+<img src="images/dog.jpg" alt="개" />
+<img src="images/dog.jpg" alt="개" />
+<img src="images/dog.jpg" alt="개" />
+<img src="images/dog.jpg" alt="개" />
+<img src="images/dog.jpg" alt="개" />
+
+.box*4
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+
+#box$*5
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+<div id="box5"></div>
+
+.box#box${box$}*5		
+<div class="box" id="box1">box1</div>
+<div class="box" id="box2">box2</div>
+<div class="box" id="box3">box3</div>
+<div class="box" id="box4">box4</div>
+<div class="box" id="box5">box5</div>
+
+
+img[src=images/obj$.jpg]*5
+<img src="images/obj1.jpg" alt="" />
+<img src="images/obj2.jpg" alt="" />
+<img src="images/obj3.jpg" alt="" />
+<img src="images/obj4.jpg" alt="" />
+<img src="images/obj5.jpg" alt="" />
+
+
+h$*6
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h4></h4>
+<h5></h5>
+<h6></h6>
+
+
+h${제목$}*6
+<h1>제목1</h1>
+<h2>제목2</h2>
+<h3>제목3</h3>
+<h4>제목4</h4>
+<h5>제목5</h5>
+<h6>제목6</h6>
+
+
+8. 연속 생성
+div+p
+<div></div>
+<p></p>
+
+h1{제목}+p{내용}*5
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+
+(h1{제목}+p{내용}*2)*5
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>												
+
+div+a+div+p+div+img
+<div></div>
+<a href=""></a>
+<div></div>
+<p></p>
+<div></div>
+<img src="" alt="" />
+
+9. 하위 생성
+
+table+
+<table>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+
+ul+
+<ul>
+	<li></li>
+</ul>
+
+ol+ 
+<ol>
+	<li></li>
+</ol> 
+
+select+
+<select name="" id="">
+	<option value=""></option>
+</select>
+
+
+10. 자식 생성
+
+div>p
+<div>
+	<p></p>
+</div>
+
+
+div>p*3
+<div>
+	<p></p>
+	<p></p>
+	<p></p>
+</div>
+
+(div>p*2)*3
+<div>
+	<p></p>
+	<p></p>
+</div>
+<div>
+	<p></p>
+	<p></p>
+</div>
+<div>
+	<p></p>
+	<p></p>
+</div>
+
+table#tbl>tr*5>td*3
+<table id="tbl">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+
+
+table#tbl>tr*3>td.lable+td.content
+<table id="tbl">
+	<tr>
+		<td class="lable"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td class="lable"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td class="lable"></td>
+		<td class="content"></td>
+	</tr>
+</table>
+
+
+table#tbl>tr*3>td#label$+td.content
+<table id="tbl">
+	<tr>
+		<td id="label1"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td id="label2"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td id="label3"></td>
+		<td class="content"></td>
+	</tr>
+</table>
+
+
+table#tbl>(tr>th*3)+((tr>td*3)*5)	
+<table id="tbl">
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>		
+		
+		
+11. 더미 키워드
+
+lorem		
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus beatae modi labore necessitatibus obcaecati perferendis iure deleniti voluptas ipsum iste molestiae aperiam ipsa quia reprehenderit consequatur cum cupiditate temporibus in!		
+		
+		
+table>(tr>th*2)+(tr>(td{word}+td{lorem}))*3		
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>lorem</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>lorem</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>lorem</td>
+	</tr>
+</table>		
+		
+		
+table>(tr>th*2)+(tr>(td{word}+lorem(td{desc})))*3			
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ducimus delectus beatae quas sit natus porro sequi. Quam asperiores eos accusantium adipisci maxime possimus aliquid. Non sint dolorum quis enim!</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Incidunt tempore quasi reprehenderit praesentium ipsum optio necessitatibus ratione quidem perspiciatis tempora architecto non aliquam nulla aperiam ipsam repudiandae reiciendis temporibus inventore similique veniam explicabo dolorem distinctio error quam iure.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Beatae nihil porro vel minima soluta cupiditate molestiae unde dolore necessitatibus corporis officia ex debitis natus dignissimos commodi neque praesentium magni illo excepturi molestias harum itaque ipsam suscipit modi nostrum.</td>
+	</tr>
+</table>			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
