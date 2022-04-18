@@ -40,7 +40,6 @@
     rs.close();
     stmt.close();
     DBConn.close();
-
 %>
 
 <!DOCTYPE html>
@@ -59,6 +58,36 @@
 	.list{text-align: center;}
 	
 </style>
+
+<script type="text/javascript">
+
+	// 필수 입력 항목(이름)에 대한 기본적인 확인
+	function formCheck()
+	{
+		// 확인
+		//alert("sd");
+		//return false; → 페이지 넘어가면 안됨!
+		//return true;  → 페이지 넘어가도 OK!
+		
+		
+		var uName = document.getElementById("userName");
+		var nErr = document.getElementById("nameErr");
+		
+		nErr.style.display = "none";
+		
+		if (uName.value=="") // 만약 이름을 입력하지 않았다면...
+		{
+			nErr.style.display = "inline";
+			return false;
+		}
+		
+		return true;
+	}
+	
+
+</script>
+
+
 </head>
 <body>
 
@@ -69,7 +98,7 @@
 
 <div>
 	<!-- 데이터 입력 -->
-	<form action="">
+	<form action="MemberInsert.jsp" method="post" onsubmit="return formCheck()">
 		<table>
 			<tr>
 				<th>이름(*)</th>
