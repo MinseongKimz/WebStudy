@@ -46,7 +46,10 @@
  			str.append("<a href='javascript:memberDelete(" + dto.getSid() +  ", \"" + dto.getName() + "\" )'>");
 			str.append("<button type='button' class='btn01'>삭제</button>");
 			str.append("</a>");
-			
+			str.append(" ");
+			str.append("<a href='MemberScoreSelect.jsp?sid="+dto.getSid()+"'>");
+			str.append("<button type='button' class='btn01'>성적</button>");
+			str.append("</a>");
 			str.append("</td>");
 			str.append("</tr>");
 		}
@@ -106,7 +109,7 @@
 
 
 <div>
-	<a href="MemberScoreSelect.jsp"><button type="button">회원 성적 관리</button></a>
+	<!-- <a href="MemberScoreSelect.jsp"><button type="button">회원 성적 관리</button></a> -->
 	<a href="MemberInsertForm.jsp"><button type="button">신규 회원 등록</button></a>
 </div>
 <br>

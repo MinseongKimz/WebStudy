@@ -47,16 +47,19 @@ public class MemberScoreDAO
 	}
 	
 	// 성적 전체 리스트 출력 담당 메소드
-	public ArrayList<MemberScoreDTO> lists() throws SQLException
+	public ArrayList<MemberScoreDTO> lists(String sid) throws SQLException
 	{
 		ArrayList<MemberScoreDTO> result = new ArrayList<MemberScoreDTO>();
 		
 		String sql = "SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT"
-				   + ", ((KOR+ENG+MAT)/3) AS AVG, RANK()"
-				   + " OVER(ORDER BY (KOR+ENG+MAT) DESC) AS RANK"
+				   + ", ((KOR+ENG+MAT)/3) AS AVG"
+				   + ", RANK"
 				   + " FROM VIEW_MEMBERSCORE"
+				   + " WHERE SID = ?"
 				   + " ORDER BY SID";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, sid);
 		
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next())
@@ -84,6 +87,69 @@ public class MemberScoreDAO
 	{
 		DBConn.close();
 	}
+	
+	// 번호로 정보 찾기 메소드
+	public MemberScoreDTO search(String sid) throws SQLException
+	{
+		MemberScoreDTO result = new MemberScoreDTO();
+		
+		// 쿼리문 준비
+		String sql = "SELECT SID, NAME, KOR, ENG, MAT FROM VIEW_MEMBERSCORE WHERE SID = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, sid);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while (rs.next())
+		{
+			result.setName(rs.getString("NAME"));
+			result.setKor(rs.getInt("KOR"));
+			result.setEng(rs.getInt("ENG"));
+			result.setMat(rs.getInt("MAT"));
+		}
+		rs.close();
+		pstmt.close();
+		return result;
+	}
+	
+	// 성적 수정 메소드
+	public int modify(MemberScoreDTO dto) throws SQLException 
+	{
+		int result = 0;
+		
+		String sql = "UPDATE TBL_MEMBERSCORE SET KOR=?, ENG=?, MAT=? WHERE SID=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, dto.getKor());
+		pstmt.setInt(2, dto.getEng());
+		pstmt.setInt(3, dto.getMat());
+		pstmt.setString(4, dto.getSid());
+		
+		result = pstmt.executeUpdate(); 
+		pstmt.close();
+		return result;
+	}
+	
+	// 성적 삭제 메소드
+	public int delete(String sid) throws SQLException
+	{
+		int result = 0;
+		
+		String sql = "DELETE FROM TBL_MEMBERSCORE WHERE SID=?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, sid);
+		
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		
+		return result;
+		
+	}
+	
 	
 	
 }
