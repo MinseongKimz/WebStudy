@@ -207,7 +207,7 @@
 
    - typeSpec 속성
      class = "class_name" |
-     class = "class_name" type="type_name"|
+     class = "class_name" type="type_name" |
      type="type_name" class = "class_name" |
      beanName="bean_name" type="type_name" |
      type="type_name"  beanName="bean_name"|
@@ -281,35 +281,6 @@
 
    - property 속성
      얻고자 하는 속성의 이름
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
 
 
 
