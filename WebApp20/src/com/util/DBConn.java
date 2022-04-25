@@ -1,3 +1,6 @@
+/*
+
+*/
 package com.util;
 
 import java.sql.Connection;
@@ -14,6 +17,7 @@ public class DBConn
 			try
 			{
 				String url = "jdbc:oracle:thin:@localhost:1521:xe";
+				///String url = "jdbc:oracle:thin:@강의장ip:1521:xe"; 강의장 ip로 바꿀껏
 				String user = "scott";
 				String pwd = "tiger";
 				

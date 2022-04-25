@@ -17,4 +17,4 @@
 	08. Article.jsp
 	09. Updated.jsp
 	10. Updated_ok.jsp
-	11. Delete.jsp
+	11. Delete.jsp    

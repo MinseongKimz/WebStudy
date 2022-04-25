@@ -114,8 +114,83 @@ UPDATE TBL_BOARD SET NAME='김민성', PWD='1234', EMAIL='kms@test.com', SUBJECT='�
 
 --○ 특정 게시물(50번)의 다음 번호 읽어오는 쿼리문 구성
 
+SELECT NVL(MIN(NUM),-1) NEXTNUM
+FROM TBL_BOARD
+WHERE NUM>50;
+-- 50번 보다 큰 번호중 가장 작은 번호를 가져와라.. 
+--> 한줄 구성
+SELECT NVL(MIN(NUM),-1) NEXTNUM FROM TBL_BOARD WHERE NUM>50
+;
 
 --○ 특정 게시물의 이전 번호 읽어오는 쿼리문 구성
+SELECT NVL(MAX(NUM),-1) BEFORENUM
+FROM TBL_BOARD
+WHERE NUM<50;
+--> 한줄 구성
+SELECT NVL(MAX(NUM),-1) BEFORENUM FROM TBL_BOARD WHERE NUM<50;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
