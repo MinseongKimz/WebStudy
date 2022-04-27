@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="com.test.BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.util.MyUtil"%>
@@ -20,8 +21,6 @@
 	
 	// 이전 페이지로부터 넘어온 페이지 번호 수신
 	String pageNum = request.getParameter("pageNum");
-	
-	// 현재 표시되어야 하는 페이지(기본)
 	int currentPage = 1;
 	
 	if (pageNum !=null)
@@ -32,10 +31,25 @@
 	String searchValue = request.getParameter("searchValue");
 	
 		
-	// 내일진행
+	// (4-27일)진행
 	
-	
-	
+	if (searchKey != null) // 검색기능을 통해 이 페이지가 요청 되었다면
+	{
+		// 넘어온 값이 get 방식이라면...
+		//→  GET 은 한글 문자열을 인코딩해서 보내기 때문에...
+		if(request.getMethod().equalsIgnoreCase("GET"))
+		{
+			// 디코딩 처리
+			searchValue = URLDecoder.decode(searchValue, "UTF-8");
+		}
+		
+		
+	}
+	else	// 기본적인 페이지 요청이 이루어졌을 경우
+	{
+		searchKey = "subject";
+		searchValue = "";
+	}
 	
 	
 	Connection conn = DBConn.getConnection();
@@ -44,29 +58,38 @@
 
 	
 	// 전체 데이터 갯수 구하기
-	//int dataCount = dao.getDataCount();
+	int dataCount = dao.getDataCount(searchKey, searchValue);
 	
 	// 전페 페이지를 기준으로 총 페이지 수 계산
 	int numPerPage = 10;		// 한 페이지에 표시할 데이터 갯수
-	//int totalPage = myUtil.getPageCount(numPerPage, dataCount);
+	int totalPage = myUtil.getPageCount(numPerPage, dataCount);
 	
 	// 전체 페이지 수 보다 표시할 페이지가 큰 경우
 	// 표시할 페이지를 전체 페이지로 처리
-	//if (currentPage> totalPage)
-	//		currentPage = totalPage;
+	// → 한마디로, 데이터를 삭제해서 페이지가 줄어들었을 경우...
+	if (currentPage> totalPage)
+			currentPage = totalPage;
 	
 	// 데이터베이스에서 가져올 시작과 끝 위치
 	int start = (currentPage - 1) * numPerPage +1;
 	int end = currentPage * numPerPage;
 	
 	// 실제 리스트 가져오기
-	//List<BoardDTO> lists = dao.getList(start, end);
+	List<BoardDTO> lists = dao.getLists(start, end, searchKey, searchValue);
 	
 	// 페이징 처리
 	String param = "";
 	
+	
+	// 검색 값이 존재한다면
+	if (!searchValue.equals(""))
+	{
+		param += "?searchKey="+searchKey;
+		param += "&searchValue="+searchValue;
+	}
+	
 	String listUrl = "List.jsp" + param;
-	//String pageIndexList = myUtil.pageIndexList(currentPage, totalPage, listUrl);
+	String pageIndexList = myUtil.pageIndexList(currentPage, totalPage, listUrl);
 	
 	// 글 내용 보기 주소
 	String articleUrl = cp + "/Article.jsp"; //cp = /WebApp20
@@ -91,6 +114,19 @@
 
 <link rel="stylesheet" href="<%=cp %>/css/style.css" type="text/css">
 <link rel="stylesheet" href="<%=cp %>/css/list.css" type="text/css">
+<script type="text/javascript">
+
+	function sendIt()
+	{
+		var f = document.searchForm;
+		
+		f.action = "<%=cp%>/List.jsp";
+		
+		f.submit();
+	}
+
+
+</script>
 </head>
 <body>
 
@@ -103,22 +139,54 @@
 	
 		<div id = "leftHeader">
 			
+			<!-- 검색 폼 구성 -->
 			<form action="" name="searchForm" method="post">
 				<select name="searchKey" class="selectFiled">
+					<!-- 
 					<option value="subject">제목</option>
 					<option value="name">작성자</option>
 					<option value="content">내용</option>
+					 -->
+					
+					<%
+					if (searchKey.equals("name"))		// 수신한 searchKey 가 name  이라면...
+					{
+					%>
+						<option value="subject">제목</option>
+						<option value="name" selected="selected">작성자</option>
+						<option value="content">내용</option>
+					<%
+					}
+					else if (searchKey.equals("content"))	// 수신한 searchKey 가 content 라면...
+					{
+					%>
+						<option value="subject">제목</option>
+						<option value="name">작성자</option>
+						<option value="content" selected="selected">내용</option>
+					<%
+					}
+					else	// 수신한 searcKey 가 subject 나 없다면..
+					{
+					%>
+						<option value="subject">제목</option>
+						<option value="name">작성자</option>
+						<option value="content">내용</option>
+					<%
+					}
+					%>
+					
 				</select>
-				<input type="text" name="searchValue" class="textFiled" value="">
-				<input type="button" value="검색" class="btn2">
+				<input type="text" name="searchValue" class="textFiled" value="<%=searchValue%>">
+				<input type="button" value="검색" class="btn2" onclick="sendIt()">
 			</form>
 		
 		</div><!-- #leftHeder -->
 		
 		<div id="rightHeader">
-			<input type="button" value="글올리기" class="btn2">
-			
+			<input type="button" value="글올리기" class="btn2"
+			 onclick="javascript:location.href='<%=cp%>/Created.jsp'">
 		</div><!-- #rightHead -->
+		
 	</div><!-- #bbsList_header -->
 	
 
@@ -141,7 +209,7 @@
 				<dd class="created">2022-04-25</dd>
 				<dd class="hitCount">0</dd>
 			</dl> -->
-			<%-- 
+			
 			<%
 			for(BoardDTO dto : lists)
 			{
@@ -179,14 +247,12 @@
 			}
 			%>
 			</p>
-		 --%>	
 		</div><!-- #footer -->
 		
 		
 	</div><!-- #bbsList_list -->
 
 </div><!--#bbsList -->
-
 
 </body>
 </html>
