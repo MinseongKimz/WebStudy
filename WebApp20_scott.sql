@@ -116,6 +116,59 @@ SELECT COUNT(*) AS COUNT FROM TBL_BOARD WHERE SUBJECT LIKE '%음식%'
 ;
 
 
+SELECT RANK
+FROM
+(
+    SELECT NUM, RANK() OVER(ORDER BY NUM DESC) AS RANK 
+    FROM TBL_BOARD
+)T
+WHERE T.NUM = 2;
+-- 한줄 구성
+SELECT RANK FROM ( SELECT NUM, RANK() OVER(ORDER BY NUM DESC) AS RANK FROM TBL_BOARD )T WHERE T.NUM = 2
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

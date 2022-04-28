@@ -296,5 +296,25 @@ public class BoardDAO
       return result;
    }
    
+// 특정 페이지의 실제 테이블 위치를 아는 함수
+   public int getRealNum(int num) throws SQLException
+   {
+	   int result = 0;
+	   String sql = "SELECT RANK FROM ( SELECT NUM, RANK() OVER(ORDER BY NUM DESC) AS RANK FROM TBL_BOARD )T WHERE T.NUM = ?";
+	   
+	   PreparedStatement pstmt = conn.prepareStatement(sql);
+	   pstmt.setInt(1, num);
+	   ResultSet rs = pstmt.executeQuery();
+	   
+	   while (rs.next())
+	   {
+		   result = rs.getInt("RANK");
+	   }
+	   
+	   result = result%10;
+	   rs.close();
+	   pstmt.close();
+	   return result;
+   }
    
 }

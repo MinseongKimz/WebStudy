@@ -44,6 +44,7 @@
 	// textare 의 특성상 엔터치면 \n 으로 등록되고 이는 html 영역에서 안되기 때문에 
 	// 매번 해주듯이 <br>로 바꿔주고 이를 다시 setContent를 이용해서 내용을 바꿔줬다.
 	
+	int realNum = dao.getRealNum(num);
 
 %>
 
@@ -101,8 +102,19 @@
 		<div class="bbsArticle_bbottomLine">
 			<!-- 이전글 : (104) 취미 관련 게시물 -->
 			
+			
+			
 			<%
-			if(beforeNum != -1)
+			if (beforeNum != -1 && realNum==0)
+			{
+			%>
+			<a href="<%=cp%>/Article.jsp?pageNum=<%=Integer.parseInt(pageNum)+1%>&num=<%=beforeNum %>">
+			이전글 : (<%=beforeNum %>) <%=dtoBefore.getSubject() %>
+			</a>
+			
+			<%
+			}
+			else if(beforeNum != -1)
 			{	
 			%>
 			<a href="<%=cp%>/Article.jsp?pageNum=<%=pageNum%>&num=<%=beforeNum %>">
@@ -122,7 +134,15 @@
 		<div class="bbsArticle_noLine">
 		
 			<%
-			if(nextNum != -1)
+			if (nextNum != -1 && realNum==1)
+			{
+			%>
+			<a href="<%=cp%>/Article.jsp?pageNum=<%=Integer.parseInt(pageNum)-1%>&num=<%=nextNum %>">
+			다음글 : (<%=nextNum %>) <%=dtoNext.getSubject() %>
+			</a>
+			<%
+			}
+			else if(nextNum != -1)
 			{	
 			%>
 			<a href="<%=cp%>/Article.jsp?pageNum=<%=pageNum%>&num=<%=nextNum %>">
@@ -138,11 +158,7 @@
 			}
 			%>
 		
-		
-		
-			
 		</div><!-- .bbsArticle_noLine -->
-	
 
 	</div><!-- #bbsArticle" -->
 
@@ -152,8 +168,10 @@
 
 	<div id="bbsArticle_footer">
 		<div id="leftFooter">
-			<input type="button" value="수정" class="btn2">
-			<input type="button" value="삭제" class="btn2">
+			<input type="button" value="수정" class="btn2" 
+			onclick="javascript:location.href='<%=cp%>/Updated.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>&status=1'">
+			<input type="button" value="삭제" class="btn2"
+			onclick="javascript:location.href='<%=cp%>/Updated.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>&status=2'">
 		</div><!-- #leftFooter -->
 		
 		<div id="rightFooter">
@@ -164,7 +182,6 @@
 	</div><!-- #bbsArticle_footer -->
 
 </div><!-- close #bbs -->
-
 
 </body>
 </html>
