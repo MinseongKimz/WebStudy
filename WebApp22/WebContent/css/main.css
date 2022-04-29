@@ -2,68 +2,57 @@
 
 *
 {
-	background-color: black;
-	font-family: 나눔고딕코딩;
-	color: #ababab;
-}
-body, p, div, span, input, table, th, td, select
-{
-	font-size: 18px;
+	font-family: 맑은 고딕;
+	color: #343;
 	
 }
-.txt
+
+body, p, div, span, input, table, th, td, select
 {
-	font-weight: bold;
-	background-color: #EEE;
-	width:150px;
+	font-size:  18px;
 }
+
 .control
 {
-	border: 1px solid grey;
-	border-radius: 3px;
+	border: 1px solid gray;	
+	border-radius:3px;
 }
 
 .table
 {
 	border-collapse: collapse;
-	width: 250px;
+	width: 100%; 
 }
 
 .table th, .table td
 {
-	border: 1px solid grey;
-	border-left: 1px;
-	border-right: 1px;
+	border : 1px solid gray;
+	border-left: 0px;
+	border-right: 0px; 
 	padding: 3px;
-	line-height: 150%;	
-}
-.table td
-{
-	background-color: gray;
-}
-.table th
-{
-	font-weight: bold;
-	background-color: #EEE;
+	line-height: 150%;
 }
 
-.btn01
+.btn
 {
-	font-weight: bold;
-	width: 80px;
-	color: blue;
-	background-color: gray;	
-}
-.btn02
-{
-	font-weight: bold;
-	width: 80px;
-	color: red;
-	background-color: gray;
+	font-weight: bold;	
 }
 
 .btn:hover
 {
 	color: white;
-	background-color: tomato;
+	background-color: #787; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
