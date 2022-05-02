@@ -20,7 +20,7 @@
 
 <div>
 
-	<form action="MemberInsert.jsp">
+	<form action="MemberInsert.jsp" method="get">
 	
 		<!-- (이름, 전화번호, 주소) * 5명 분 -->
 		<!-- → submit 액션 처리 -->
@@ -29,7 +29,8 @@
 				<th>이름</th>
 				<td>
 					<c:forEach var="a" begin="1" end="5" step="1">
-						<input type="text" name="name${a }">
+					<c:set var="name" value="name${a }"></c:set>
+						<input type="text" name="${name }">
 					</c:forEach>
 				</td>
 			</tr>
@@ -37,7 +38,8 @@
 				<th>전화번호</th>
 				<td>
 					<c:forEach var="a" begin="1" end="5" step="1">
-						<input type="text" name="tel${a }">
+					<c:set var="tel" value="tel${a }"></c:set>
+						<input type="text" name="${tel }">
 					</c:forEach>
 				</td>
 			</tr>
@@ -45,7 +47,8 @@
 				<th>주소</th>
 				<td>
 					<c:forEach var="a" begin="1" end="5" step="1">
-						<input type="text" name="addr${a }">
+					<c:set var="addr" value="addr${a }"></c:set>
+						<input type="text" name="${addr }">
 					</c:forEach>
 				</td>
 			</tr>
@@ -60,16 +63,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 
 
 

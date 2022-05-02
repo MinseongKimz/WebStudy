@@ -3,8 +3,6 @@
 	<name>WebApp00</name>
 	<comment></comment>
 	<projects>
-		<project>jstl</project>
-		<project>standard</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
