@@ -116,6 +116,131 @@
 - 사용자 최초 요청 주소
 http://localhost:8090/WebApp24/mvcbegin
 
+---------------------------------------------------------------------------------------------------
+
+○ MVC 관련 실습 2
+
+- prj : WebApp25
+
+   ·web.xml     	→ url 맵핑
+   ·MVCTest01.java 	→ Controller 역할 (서블릿 클래스)
+   ·MVCTest01.jsp	→ View 역할 (JSP페이지)
+
+
+- 사용자 최초 요청 주소
+http://localhost:8090/WebApp25/mvctest01
+
+
+---------------------------------------------------------------------------------------------------
+
+○ MVC 관련 실습 3
+
+- prj : WebApp25
+
+   ·web.xml     		→ url 맵핑
+   ·MVCTest02.java 		→ Controller 역할 (서블릿 클래스)
+   ·MVCTest02.jsp		→ View 역할 (JSP페이지)
+   ·MVCTest02Model.java	→ Model 역할 (일반 자바 클래스)
+
+
+- 사용자 최초 요청 주소
+http://localhost:8090/WebApp25/mvctest02
+
+
+---------------------------------------------------------------------------------------------------
+
+○ 폼(form) 데이터 전송 및 수신 과정 비교
+
+   ※ MVC 패턴 적용 이전 단계와 MVC 패턴 적용 이후 단계를
+      반드시 비교하여 이해 할 수 있도록 할 것
+
+    - A
+ 	·prj : WebApp26
+
+	·HelloSend01.html
+	·HelloReceive01.jsp
+	
+	·사용자 최초 요청 주소
+	  http://localhost:8090/WebApp26/HelloSend01.html
+	
+
+    - B
+	·prj : WebApp27
+
+	·HelloSend02.html
+	·HelloReceive02.java
+	·web.xml	
+	
+	·사용자 최초 요청 주소
+	  http://localhost:8090/WebApp27/HelloSend02.html
+
+    - C
+	·prj : WebApp28
+
+	·HelloSend03.html
+	·HelloSend03Controller.java
+	·HelloReceive03Controller.java	
+	·HelloReceive03Model.java
+	·HelloReceive03.jsp
+	·web.xml
+
+	·사용자 최초 요청 주소
+	  http://localhost:8090/WebApp28/hello
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
