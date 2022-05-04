@@ -28,9 +28,7 @@
  *	  children: optional children selector (Default: null)
  *  }); 
  *
-
 // ========================================================= */
-
 (function($)
 {
 

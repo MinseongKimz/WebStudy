@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest02.html</title>
+
+<style type="text/css">
+	.item
+	{
+		border: solid 2px red;
+		color: white;
+		background: black; 
+	}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	/*
+	function test()
+	{
+		alert("함수 호출 확인");
+		var a = 10;
+	} 
+	*/
+	// 같은 의미
+	//jquery();
+	//jquery(document).ready();
+	//$();
+	//$(document).ready();
+	/* 
+	$(document).ready(function()
+	{
+		//alert("함수호출 확인");
+		
+		// ※ 우리가.. 또는 이 페이지를 이용하는 사용자가...
+		//    뭔가 건드리지 않아도...
+		//    (즉, 특별한 이벤트를 발생시키지 않아도...)
+		//    자동으로 처리할 수 있는 영역
+	});
+	 */
+	
+	$(function()
+	{
+		//alert("함수 호출 확인~!!");
+		
+		// ※ 우리가.. 또는 이 페이지를 이용하는 사용자가...
+		//    뭔가 건드리지 않아도...
+		//    (즉, 특별한 이벤트를 발생시키지 않아도...)
+		//    자동으로 처리할 수 있는 영역
+		
+		//$("h1").click(h1이 클릭 되 었을 때 수행되어야 할 기능, 동작, 행위);
+		//					↓
+		//$("h1").click(이름 필요 없는 함수정의 (동작을 수행...)); 
+		/* 
+		$("h1").click(function()
+		{
+			// alert("h1클릭함....");
+			//alert($(this).html() );	
+			//$(this).html("어떻게 될까요???"); // 클릭한 영역이 어떻게될까요로 대체
+			//$(this).html($(this).html() + "★");
+			
+		});
+		*/
+		/* 
+		$("h1").on("click", function()
+		{
+			//alert("클릭 on");
+			//alert($(this).html());
+		});
+		*/
+		/* 
+		$("h1").one("click", function()
+		{
+			//alert("클릭!!!!");
+			//alert($(this).html());
+			$(this).html(function(index, html)
+			{
+				//alert(html);
+				//alert(index);
+				return html + "♥";
+			});
+		});
+		*/
+		
+		//{속성명:속성값, 속성명:속성값, 속성명:속성값, .....}
+		
+		//$("h1").on({이벤트:기능, 이벤트:기능,.... 가능});
+		/* 
+		$("h1").on(
+		{		
+			이벤트:기능, 이벤트:기능,
+			
+			
+		});
+		*/
+		/* 
+		$("h1").on(
+		{
+			//mouseenter : 어찌어찌 하겟다 → 마우스 진입할 떄	
+			//mouseleave : 어찌어찌 하겟다 → 마우스 빠져 나올때	
+			mouseenter:function() {$(this).addClass("item"); }
+			, mouseleave:function() {$(this).removeClass("item"); }
+			
+		});
+	    */
+	    //mouseenter, mouseleave
+	    $("h1").hover(function()
+		{
+			$(this).addClass("item");
+		}, function()
+		{
+			$(this).removeClass("item");
+		}
+		);
+		
+		
+	});
+	
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+</script>
+
+</head>
+<body>
+
+
+<!-- <h1 onclick="test()">박현수</h1> -->
+<!-- <h1 class="item">우수정</h1> -->
+
+<h1>박현수</h1>
+<h1>우수정</h1>
+<h1>김태형</h1>
+<h1>이아린</h1>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

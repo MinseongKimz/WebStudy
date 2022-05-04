@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest04.html</title>
+<style type="text/css">
+	table {
+	width: 500px;
+ 	height: 500px;
+}
+th {
+	width: 100px;
+	height: 100px;	
+}
+
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function()
+	{
+		var a = 1;
+		
+		$("h1").click(function()
+		{
+			a++;
+			
+			if (a%2==0)
+			{
+				$(this).html($(this).html() + "○");	
+			}
+			else
+			{
+				$(this).html($(this).html() + "●");
+			}
+		}); 
+		
+		// ※ 이벤트 강제 발생시키기 : trigger(트리거)
+		$("input[type=button]").click(function()
+		{
+			//alert("확인");
+			
+			// 강제로 첫 번째 h1 태그에 click 이벤트를 발생 시키겟다.
+			//$("h1").first().click();	
+			
+			// 강제로 마지막 h1 태그에 click 이벤트 발생시키겟다.
+			$("h1").last().click();
+			
+		});
+		
+		
+	});
+
+
+</script>
+
+</head>
+<body>
+
+<input type="button"  value="트리거 작동"/>
+
+<h1>click start1 : </h1>
+<h1>click start2 : </h1>
+
+
+
+
+
+
+
+</body>
+</html>

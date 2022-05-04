@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest06.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<style>
+	a#MOVE_TOP_BTN {
+		position: fixed;
+		right: 2%;
+		bottom: 50px;
+		display: none;
+		z-index: 999;
+	}
+</style>
+
+<script>
+    $(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 500) {
+                $('#MOVE_TOP_BTN').fadeIn();
+            } else {
+                $('#MOVE_TOP_BTN').fadeOut();
+            }
+        });
+        
+        $("#MOVE_TOP_BTN").click(function() {
+            $('html, body').animate({
+                scrollTop : 0
+            }, 400);
+            return false;
+        });
+    });
+</script>
+
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		// 초기 개시물 구성 → 스크롤 생성 -------------------------
+		
+		var dheight =  $(document).height(); // 문서의 높이
+		
+		// 확인
+		//alert(dheight);
+		
+		var scrollHeight = $(window).scrollTop() + $(window).height(); // 스크롤의 높이
+		
+		//확인
+		//alert(scrollHeight);
+		
+		for (var i = 0; i < 30; i++)
+		{
+			$("<h3>기존의 읽어온 게시물 "
+					+ $(document).height() + " / "
+					+ $(window).scrollTop() + " / "
+					+ $(window).height()
+					+"</h3>").appendTo("body");
+		}
+
+		//  ------------------------- 초기 개시물 구성 → 스크롤 생성
+
+		
+		$(window).scroll(function() {
+			
+			var docHeight = $(document).height();
+			var scrollHeight = $(window).scrollTop() + $(window).height();
+			
+			// 스크롤이 바닥으로 내려졌을 때...
+			// 태그 10개 추가하여 body에 붙이기
+			if (docHeight == scrollHeight)
+			{
+				for (var i = 0; i < 10; i++)
+				{
+					$("<h3>추가로 읽어온 게시물 "
+							+ $(document).height() + " / "
+							+ $(window).scrollTop() + " / "
+							+ $(window).height()
+							+"</h3>").appendTo("body");
+				}
+			}
+		});
+	
+	});
+
+</script>
+
+</head>
+<body>
+
+
+<a id="MOVE_TOP_BTN" href="#">TOP</a>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
