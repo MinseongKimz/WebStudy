@@ -12,9 +12,6 @@
 		// XMLHttpRequest 객체 (→ AJAX 객체)를 담을 변수 선언
 		var xmlHttp;
 		
-		
-		
-		
 		// 클라이언트 측 브라우저에 따른 분기
 		// 클라이언트측에서 자신의 브라우저가 XMLHttpRequest를 
 		// 지원하고 있는 상황이라면..
@@ -85,7 +82,6 @@
 		//  와 같이 헤더를 추가해주어야 한다.
 		
 		xmlHttp.open("GET", "ajaxTarget.txt", true);
-		
 		xmlHttp.send("");
 		
 	}
@@ -94,12 +90,11 @@
 </head>
 <body>
 
-
 <div id="myDiv">
 	<h1>AJAX 를 활용하여 이 텍스트를 바꾸어 보자</h1>
 </div>
 
-<button type="button" onclick="loadXMLDocs()">Content 바꾸기</button>
+<button type="button" onclick="loadXMLDocs()" id="btn">Content 바꾸기</button>
 
 </body>
 </html>
