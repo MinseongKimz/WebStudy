@@ -25,8 +25,8 @@ public class ApiExamSearchBlog
 	        }
 
 
-	        String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text+"&sort=sim";    // json 결과
-	        //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
+	        String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text+"&display=30&sort=sim";    // xml 결과
+	        //String apiURL = "https://openapi.naver.com/v1/search/blog?query="+ text; // json 결과
 
 
 	        Map<String, String> requestHeaders = new HashMap<>();
