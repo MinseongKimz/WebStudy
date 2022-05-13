@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest05.html</title>
+
+
+<script type="text/javascript">
+
+
+	var myJsonObject5 =
+	{
+		"test" : function(args)
+		{
+			alert("Method Test : " + args);
+		}	
+	}
+	var t = myJsonObject5.test;
+	
+
+</script>
+
+
+
+</head>
+<body>
+
+<form>
+
+	<input type="button" value="click1" onclick="t('minsung')">
+	<!-- Method Test : minsung -->
+
+	<input type="button" value="click2"
+	 onclick="eval('var a=' + myJsonObject5.test); a('moonjung')">
+	 <!-- Method Test : moonjung -->
+
+	<input type="button" value="click3"
+		onclick="eval( '(' + myJsonObject5.test + ')(\'sunha\')' )">
+	<!-- myJsonObject5.test('sunha') -->
+	<!-- Method Test : sunha -->
+</form>
+
+</body>
+</html>

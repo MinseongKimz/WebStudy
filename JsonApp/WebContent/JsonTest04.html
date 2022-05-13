@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest04.html</title>
+
+<script type="text/javascript">
+	
+	var myJsonObject4 =
+	{
+		"test" : function()
+		{
+			alert("Method Test ~!!!");
+		}	
+	}
+
+</script>
+
+</head>
+<body>
+
+	<input type="button" value="click1" onclick="myJsonObject4.test">
+	<!--  -->
+	
+	<input type="button" value="click2" onclick="alert(myJsonObject4.test)">	
+	<!-- 저 위 함수 텍스트 그대로 나와버림 -->
+	
+	<br />
+	
+	<input type="button" value="click3" onclick="alert(myJsonObject4.test())">	
+	<!-- Method Test ~!!! → undefined -->
+	
+	<!-- 『eval()』 : 변수를 자바스크립트의 함수처럼 사용할 수 있도록 해주는 함수
+	                  즉, 정적인 문자열을 동적인 코드 형식으로 처리 -->
+	<input type="button" value="click4" onclick="eval('a=' + myJsonObject4.test); a();">                  
+	<!-- Method Test ~!!! --> <!-- a라는 변수 선언해서 myJsonObject4.test의 값대입하고 a 호출 -->
+</body>
+</html>
