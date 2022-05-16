@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BootEx03.html</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<script type="text/javascript" src="http:code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<style type="text/css">
+
+	#table1
+	{
+		width: 720px;
+	}
+	
+	#table1 th {text-align: center;}
+	#table1 th:nth-child(1) {width: 50px;}
+	#table1 th:nth-child(2) {width: 460px;}
+	#table1 th:nth-child(3) {width: 60px;}
+	#table1 th:nth-child(4) {width: 100px;}
+	#table1 th:nth-child(5) {width: 50px;}
+	
+	#table1 td {text-align: center;}
+	#table1 td:nth-child(2) {text-align: left;}
+	#table1 td:nth-child(5) {text-align: right;}
+	
+	#btnSet {margin-top: -10px;}
+	#main {width: 700px; margin: 0px auto;}
+	
+	#tblAdd{width: 600px;}
+	#tblAdd th {width: 150px; text-align: right; padding-right: 15px; }
+	#tblAdd td {width: 450px; }
+	
+</style>
+
+</head>
+<body>
+
+<h1>회원 가입</h1>
+
+<form action="" style="width: 500px; margin: 20px;">
+
+	<input type="text" class="form-control">
+	<br />
+	
+	<textarea rows="" cols="" class="form-control"></textarea>
+	<br />	
+
+	<select class="form-control">
+		<option>Text1</option>
+		<option>Text2</option>
+		<option>Text3</option>
+		<option>Text4</option>
+		<option>Text5</option>
+	</select>
+	<br>
+
+	<input type="checkbox" class="form-control" ><!-- 체크박스는 가급적 쓰지말자 -->
+	<br />
+	
+	<a href="#" class="form-control">네이버</a>
+	<a href="#" class="form-control">다음</a>
+	<br /><br /><br />
+
+	<input type="button" value="confirm" />
+	<input type="button" value="confirm" class="btn"/>
+	<input type="button" value="confirm" class="btn btn-default"/>
+	<br /><br />
+	
+	<input type="button" value="confirm" class="btn btn-default"/>
+	<input type="button" value="confirm" class="btn btn-success"/>
+	<input type="button" value="confirm" class="btn btn-primary"/>
+	<input type="button" value="confirm" class="btn btn-info"/>
+	<input type="button" value="confirm" class="btn btn-warning"/>
+	<input type="button" value="confirm" class="btn btn-danger"/>
+	<br /><br />
+		
+	<!-- 이 버튼이 포함된 폼의 크기만큼 btn-block은 크기를 꽉 채워 랜더링함. -->	
+	<input type="button" value="confirm" class="btn btn-primary btn-block">
+	<br /><br />
+	<input type="button" value="confirm" class="btn btn-default"/>
+	<input type="button" value="confirm" class="btn btn-default active"/>
+	<br /><br />
+	
+	<input type="button" value="confirm" class="btn btn-primary"/>
+	<input type="button" value="confirm" class="btn btn-primary active"/>
+	<br /><br />
+	
+	<a href="#">네이버</a>
+	<a href="#" class="btn btn-primary" role="button">네이버</a>
+	
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</form>
+
+<div id="main">
+	<h1>게시판</h1>
+	
+	<table class="table table-striped" id="table1">
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>이름</th>
+			<th>날짜</th>
+			<th>읽음</th>
+		</tr>
+		<tr>
+			<th>5</th>
+			<th>게시판 테스트입니다.</th>
+			<th>박현수</th>
+			<th>2022-05-10</th>
+			<th>22</th>
+		</tr>
+		<tr>
+			<th>4</th>
+			<th>게시판 테스트일껄요.</th>
+			<th>김태형</th>
+			<th>2022-05-09</th>
+			<th>28</th>
+		</tr>
+		<tr>
+			<th>3</th>
+			<th>게시판 테스트 이기를.</th>
+			<th>이시우</th>
+			<th>2022-05-09</th>
+			<th>35</th>
+		</tr>
+		<tr>
+			<th>2</th>
+			<th>게시판 테스트 인가요.</th>
+			<th>박현수</th>
+			<th>2022-05-08</th>
+			<th>39</th>
+		</tr>
+		<tr>
+			<th>1</th>
+			<th>게시판 테스트 인거죠.</th>
+			<th>박현수</th>
+			<th>2022-05-07</th>
+			<th>32</th>
+		</tr>
+	</table>
+	
+	
+	<div id="btnSet">
+		<input type="button" value="글쓰기" class="btn btn-default">	
+		<input type="button" value="새로고침" class="btn btn-default">	
+	</div>
+	
+</div>
+
+<br /><br /><br /><br />
+
+<div id="main">
+
+	<h1>게시판 글쓰기</h1>
+	
+	<form>
+		<table class="table table-bordred" id="tblAdd">
+			<tr>
+				<th>이름</th>
+				<td>
+					<input type="text" class="form-control" placeholder="이름을 입력하세요" />
+				</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>
+					<input type="text" class="form-control" placeholder="제목을 입력하세요" />
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>
+					<textarea rows="" cols="" class="form-control" placeholder="내용을 입력하세요"></textarea>
+				
+				</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>
+					<input type="password" class="form-control" placeholder="암호를 입력하세요" />
+				</td>
+			</tr>
+			<tr>
+				<th>파일</th>
+				<td>
+					<input type="file" class="form-control" placeholder="선택된 파일 없음" />
+				</td>
+			</tr>
+		</table>
+	
+	
+	</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>
