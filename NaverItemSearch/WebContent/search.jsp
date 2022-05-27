@@ -49,9 +49,20 @@
 						var name = $(this).find('title').text(); // 타이틀 : 물건 이름
 						var price = $(this).find('lprice').text();	// lprice : 각 항목의 최저가 → 최고가는 안나오는듯..?
 						var image = $(this).find('image').text();	// image : 각 항목의 사진 
+						var category1 = $(this).find('category1').text();
+						var category2 = $(this).find('category2').text();
+						var category3 = $(this).find('category3').text();
+						var category4 = $(this).find('category4').text();
+						var maker = $(this).find('maker').text();
 						
-						txt += "<img class='image' src='" + image +"' >"+"<p>" + name + " 최소가 : [" + price + "]</p><br>";
-						arr[index] = Number(price);	
+						if (maker!="")
+						{
+							txt += "<img class='image' src='" + image +"' >"+"<p>" + name + " 최소가 : [" + price + "]<br> 카테고리 : "
+							  +"/"+ category1 +"/"+ category2 + "/"+category3 +"/["+ maker +"]<input type='checkbox'></p><br>";
+							
+						}
+						arr[index] = Number(price);
+							
 					});
 					
 					for (var i = 0; i < arr.length; i++)
@@ -117,15 +128,19 @@
 
 
 <div class="head">
-	<p>네이버 쇼핑 검색 api</p>
+	<p>물품 검색</p>
 	<hr>
+	
 </div> 
 
 <div class="body">
-	<input type="text" id="name" > 
+	<input type="text" id="name" > <br />
+	<span style="font-size: small; color: red;">제조사와 이름을 같이 적어주세요</span>
 	<br>
 	<button id="loadBtn" class="btn">검색하기</button>
 	<button type="button" id="clearBtn" class="btn">지우기</button>
+	<button type="button">찾는 물건 없음</button>
+	
 </div>
 
 <div id="result">
